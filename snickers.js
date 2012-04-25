@@ -8,22 +8,14 @@
  *
  * jslint browser: true, css: false, maxerr: 50, indent: 4
  */
-(function (window, console) {
+(function (window, $) {
 	"use strict";
 
-	var document = window.document, test = {
+	var document = window.document, snickers = {
 		init: function () {
-			return this.say('bitch');
-		},
-		say: function (string) {
-			return 'hello ' + string;
-		},
-		what: function () {
-			console.log(document);
-			console.log('smells like teen spirit up in here....');
-			console.log(this.say('stupid whore…'));
+			console.log('wtf');
 		}
 	};
-	console.log(test.init());
-	test.what();
-}(window));
+
+	snickers.init();
+}(window, jQuery));
