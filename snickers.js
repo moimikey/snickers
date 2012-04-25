@@ -26,4 +26,4 @@
 	};
 	console.log(test.init());
 	test.what();
-}(window, console));
+}(window));
