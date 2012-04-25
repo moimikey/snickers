@@ -6,16 +6,14 @@
  *
  * (c) 2012 moimikey
  *
- * jslint browser: true, css: false, maxerr: 50, indent: 4
+ * jslint browser: true, css: false, maxerr: 50, indent: 4, predef: jQuery, $
  */
-(function (window, $) {
+var snickers = (function ($) {
 	"use strict";
 
-	var document = window.document, snickers = {
-		init: function () {
-			console.log('wtf');
-		}
+	return {
+		init: $(function () {
+			$('body').html('<div class="snickers">OMG!!!</div>');
+		})
 	};
-
-	snickers.init();
-}(window, jQuery));
+}(jQuery));
