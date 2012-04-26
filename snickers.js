@@ -29,7 +29,7 @@
  * $y: 2012
  * $u: http://www.hertzberg.co
  *
- * jslint browser: true, css: false, maxerr: 50, indent: 4, predef: jQuery, $
+ * jslint browser: true, css: false, maxerr: 50, indent: 4, predef: jQuery, $, google, navigator, window
  *
  */
 
@@ -43,22 +43,49 @@
 	 */
 	var snickers = app.snickers = {};
 
+	snickers.getVisitorInformation = function () {
+
+	};
+
+	/**
+	 * Get browser information
+	 *
+	 * @return {Object}
+	 */
+	snickers.getBrowserInformation = function () {
+		var errorLog = {
+			browserEngine: navigator.product,
+			browserAgent: navigator.userAgent,
+			browserCookies: navigator.cookieEnabled,
+			browserArch: navigator.platform,
+			language: navigator.language,
+			urlCurrent: window.location.href,
+			urlCurrentHash: window.location.hash,
+			urlQuery: window.location.search,
+			urlCurrentHost: window.location.hostname,
+			urlReferer: window.document.referrer,
+			urlTitle: window.document.title
+		};
+
+		return errorLog;
+	};
+
+	snickers.createMap = function () {
+
+	};
+
+	snickers.createMarkers = function () {
+
+	};
+
 	/**
 	 * Initialize methods
 	 *
 	 * @type {*}
 	 */
 	snickers.init = (function () {
-		console.log('snaps!');
+
 	}());
 
-
-	snickers.getUserInformation = function () {
-
-	};
-
-	snickers.generateMap = function () {
-
-	};
 
 }(window.app = window.app || {}, jQuery));
