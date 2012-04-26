@@ -32,12 +32,33 @@
  * jslint browser: true, css: false, maxerr: 50, indent: 4, predef: jQuery, $
  *
  */
-var snickers = (function ($) {
+
+(function (app, $) {
 	"use strict";
 
-	return {
-		init: $(function () {
-			$('body').html('<div class="snickers">OMG!!!</div>');
-		})
+	/**
+	 * Setup variables
+	 *
+	 * @type {Object}
+	 */
+	var snickers = app.snickers = {};
+
+	/**
+	 * Initialize methods
+	 *
+	 * @type {*}
+	 */
+	snickers.init = (function () {
+		console.log('snaps!');
+	}());
+
+
+	snickers.getUserInformation = function () {
+
 	};
-}(jQuery));
+
+	snickers.generateMap = function () {
+
+	};
+
+}(window.app = window.app || {}, jQuery));
