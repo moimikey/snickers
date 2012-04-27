@@ -88,4 +88,4 @@
 	}());
 
 
-}(window.app = window.app || {}, jQuery));
+}(window.app || {}, jQuery));
