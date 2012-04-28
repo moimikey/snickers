@@ -43,7 +43,7 @@
 	 */
 	var snickers = app.snickers = {};
 
-	snickers.getVisitorInformation = function () {
+	snickers.info = function () {
 
 	};
 
@@ -52,7 +52,7 @@
 	 *
 	 * @return {Object}
 	 */
-	snickers.getBrowserInformation = function () {
+	snickers.browser = function () {
 		var errorLog = {
 			browserEngine: navigator.product,
 			browserAgent: navigator.userAgent,
@@ -70,12 +70,26 @@
 		return errorLog;
 	};
 
-	snickers.createMap = function () {
+	snickers.map = function () {
 
 	};
 
-	snickers.createMarkers = function () {
+	snickers.markers = function () {
 
+	};
+
+	snickers.binds = function () {
+		$(function () {
+			var keyCode;
+
+			$('input.zipcode').on('keypress', function (e) {
+				keyCode = e.keyCode || e.which;
+
+				if (13 === keyCode) {
+					snickers.createMarkers();
+				}
+			});
+		});
 	};
 
 	/**
@@ -84,8 +98,7 @@
 	 * @type {*}
 	 */
 	snickers.init = (function () {
-
+		snickers.binds();
 	}());
-
 
 }(window.app || {}, jQuery));
