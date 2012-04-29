@@ -78,6 +78,10 @@
 
 	};
 
+	/**
+	 * Event bindings
+	 *
+	 */
 	snickers.binds = function () {
 		$(function () {
 			var keyCode;
@@ -86,7 +90,7 @@
 				keyCode = e.keyCode || e.which;
 
 				if (13 === keyCode) {
-					snickers.createMarkers();
+					snickers.markers();
 				}
 			});
 		});
