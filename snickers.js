@@ -78,6 +78,30 @@
 
 	};
 
+	snickers.data = function () {
+		$(function () {
+			var zipcode = $('input.zipcode');
+
+			if ($(zipcode).val().match(/[\d\.\d\.\d\.\d]/)) {
+				$.ajax({
+					url: 'http://freegeoip.net/json/' + $(zipcode).val() + '?callback=?',
+					dataType: 'jsonp',
+					crossDomain: true,
+					success: function (data) {
+						if (data) {
+							console.log(data);
+						}
+					}
+				});
+			} else {
+				$(zipcode).css({
+					boxShadow: 'inset 0 0 10px 0 red'
+				});
+				return false;
+			}
+		});
+	};
+
 	/**
 	 * Event bindings
 	 *
@@ -90,7 +114,7 @@
 				keyCode = e.keyCode || e.which;
 
 				if (13 === keyCode) {
-					snickers.markers();
+					snickers.data();
 				}
 			});
 		});
