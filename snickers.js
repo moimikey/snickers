@@ -29,11 +29,10 @@
  * $y: 2012
  * $u: http://www.hertzberg.co
  *
- * jslint browser: true, css: false, maxerr: 50, indent: 4, predef: jQuery, $, google, navigator, window
+ * jslint browser: true, css: false, maxerr: 50, indent: 4, predef: console, jQuery, navigator, window
  *
  */
-
-(function (app, $) {
+(function (x, $) {
 	"use strict";
 
 	/**
@@ -41,7 +40,7 @@
 	 *
 	 * @type {Object}
 	 */
-	var snickers = app.snickers = {};
+	var snickers = x.snickers || {};
 
 	snickers.info = function () {
 
@@ -129,4 +128,4 @@
 		snickers.binds();
 	}());
 
-}(window.app || {}, jQuery));
+}({}, jQuery));
