@@ -107,7 +107,7 @@
 					crossDomain: true,
 					success: function (data) {
 						var json = JSON.stringify(data, undefined, 4);
-						$('.results').append('<pre></pre>').children().html(snickers.highlineJSON(json));
+						$('.results').prepend('<pre></pre>').children(':first').html(snickers.highlineJSON(json));
 					}
 				});
 			} else {
@@ -133,6 +133,10 @@
 				if (13 === keyCode) {
 					snickers.data();
 				}
+			});
+
+			$('.clear').on('click', function () {
+				$('.results').empty();
 			});
 		});
 	};
