@@ -128,4 +128,4 @@
 		snickers.binds();
 	}());
 
-}({}, jQuery));
+}(window, jQuery));
