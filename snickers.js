@@ -29,7 +29,7 @@
  * $y: 2012
  * $u: http://www.hertzberg.co
  *
- * jslint browser: true, css: false, maxerr: 50, indent: 4, predef: console, jQuery, navigator, window
+ * jslint browser: true, regexp: true, css: false, maxerr: 50, indent: 4, predef: console, jQuery, navigator, window
  *
  */
 (function (x, $) {
