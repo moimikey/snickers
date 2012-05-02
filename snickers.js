@@ -77,7 +77,7 @@
 
 	};
 
-	snickers.highlineJSON = function (json) {
+	snickers.highlightJSON = function (json) {
 		json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 		return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
 			var cls = 'number';
@@ -107,7 +107,7 @@
 					crossDomain: true,
 					success: function (data) {
 						var json = JSON.stringify(data, undefined, 4);
-						$('.results').prepend('<pre></pre>').children(':first').html(snickers.highlineJSON(json));
+						$('.results').prepend('<pre></pre>').children(':first').html(snickers.highlightJSON(json));
 					}
 				});
 			} else {
