@@ -123,6 +123,22 @@
 		});
 	};
 
+	snickers.humans = function () {
+		$(function () {
+			var index = 1, url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyBMDu69iETLL9S7KMRYy2Yz-mq8O9rl2-g&cx=013036536707430787589:_pqjad5hr1a&q=inurl:humans.txt%20filetype:txt&alt=json&num=10&start=';
+
+			$.ajax({
+				url: url + index,
+				dataType: 'json',
+				crossDomain: true,
+				success: function (data) {
+					var json = JSON.stringify(data, undefined, 4);
+					$('.results').prepend('<pre></pre>').children(':first').html(snickers.highlightJSON(json));
+				}
+			});
+		});
+	}
+
 	/**
 	 * Event bindings
 	 *
@@ -135,7 +151,7 @@
 				keyCode = e.keyCode || e.which;
 
 				if (13 === keyCode) {
-					snickers.data();
+					snickers.humans();
 				}
 			});
 
