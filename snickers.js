@@ -1,55 +1,70 @@
 /**
- * snickers.js
+ * Snickers
  *
- * I'm not sure what this does yet, but you always need to start small to
- * improve.
+ * Hell if I know what I'm gonna turn this into...
  *
- * Copyright © 2012 Michael Scott Hertzberg (moimikey)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the “Software”),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- *
- * jslint browser: true, regexp: true, css: false, maxerr: 50, indent: 4, predef: console, jQuery, navigator, window
+ * @author Michael Scott Hertzberg
  *
  */
-(function (x, $) {
-	"use strict";
+;(function ($, window, undefined) {
+	'use strict';
+	var snickers = 'snickers',
+		document = window.document,
+		defaults = {
+			alive: true
+		};
 
-	/**
-	 * Setup variables
-	 *
-	 * @type {Object}
-	 */
-	var snickers = x.snickers || {};
+	function Snickers(element, options) {
+		this.element   = element;
+		this.options   = $.extend({}, defaults, options);
+		this._defaults = defaults;
+		this._name     = snickers;
+		this.init();
+	}
 
-	snickers.binds = function () {
-		$(function () {
+	Snickers.prototype.init = function () {
+		var a,
+			b,
+			c,
+			d,
+			e = this.element,
+			o = this.options,
+			i = -1,
+			u = e.innerText;
 
+		e.innerText = '';
+		e.setAttribute('data-original', u);
+		e.setAttribute('data-chars', u.length);
+		e.setAttribute('data-words', u.split(/\s+/).length);
+
+		while (++i < u.length) {
+			a = document.createElement('div');
+			b = document.createElement('div');
+			c = e.appendChild(a);
+			d = u.length === i + 1 ? e.appendChild(b) : []._;
+
+			c.setAttribute('class', snickers);
+			c.setAttribute('data-index', i);
+			c.setAttribute('data-letter', '' === u[i].replace(/^\s+|\s+$/g, "") ? '_' : u[i]);
+
+			c.innerHTML = '_' === c.dataset.letter ? '&nbsp;' : u[i];
+
+			c.setAttribute('style');
+			c.style.backgroundColor = '#FFF';
+			c.style.float = 'left';
+			c.style.marginLeft = c.dataset.letter === '_' ? '10px' : (0 === i ? 0 : '1px');
+
+			if (d) {
+				d.setAttribute('style');
+				d.style.clear = 'both';
+			}
+		}
+	};
+	$.fn[snickers] = function (options) {
+		return this.each(function () {
+			if (!$.data(this, 'plugin_' + snickers)) {
+				$.data(this, 'plugin_' + snickers, new Snickers(this, options));
+			}
 		});
 	};
-
-	/**
-	 * Init
-	 *
-	 * @type {*}
-	 */
-	snickers.init = (function () {
-		snickers.binds();
-	}());
-
-}(window, jQuery));
+}(jQuery, window));
