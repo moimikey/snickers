@@ -7,30 +7,46 @@
  *
  */
 ;(function ($, window, undefined) {
-	'use strict';
+	"use strict";
 	var snickers = 'snickers',
-		document = window.document,
-		defaults = {
-			alive: true
-		};
+	    document = window.document,
+	    defaults = {
+	        alive: true
+	    },
+	    vendors  = [ 'O', 'ms', 'Moz', 'Webkit'],
+	    prefix   = []._;
 
 	function Snickers(element, options) {
 		this.element   = element;
 		this.options   = $.extend({}, defaults, options);
 		this._defaults = defaults;
 		this._name     = snickers;
+		this.prefix();
 		this.init();
 	}
 
+	Snickers.prototype.prefix = function () {
+		var l = vendors.length;
+
+		while (l--) {
+			try {
+				if ('string' === typeof this.element.style[vendors[l] + 'Transform']) {
+					prefix = vendors[l];
+					return;
+				}
+			} catch (e) {}
+		}
+	};
+
 	Snickers.prototype.init = function () {
 		var a,
-			b,
-			c,
-			d,
-			e = this.element,
-			o = this.options,
-			i = -1,
-			u = e.innerText;
+		    b,
+		    c,
+		    d,
+		    e = this.element,
+		    o = this.options,
+		    i = -1,
+		    u = e.innerText;
 
 		e.innerText = '';
 		e.setAttribute('data-original', u);
@@ -53,6 +69,7 @@
 			c.style.backgroundColor = '#FFF';
 			c.style.float = 'left';
 			c.style.marginLeft = c.dataset.letter === '_' ? '10px' : (0 === i ? 0 : '1px');
+			c.style[prefix + 'transform'] = 'rotate(30deg)';
 
 			if (d) {
 				d.setAttribute('style');
@@ -60,6 +77,7 @@
 			}
 		}
 	};
+
 	$.fn[snickers] = function (options) {
 		return this.each(function () {
 			if (!$.data(this, 'plugin_' + snickers)) {
