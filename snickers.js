@@ -69,7 +69,7 @@
 			c.style.backgroundColor = '#FFF';
 			c.style.float = 'left';
 			c.style.marginLeft = c.dataset.letter === '_' ? '10px' : (0 === i ? 0 : '1px');
-			c.style[prefix + 'transform'] = 'rotate(30deg)';
+			c.style[prefix + 'Transform'] = 'rotate(30deg)';
 
 			if (d) {
 				d.setAttribute('style');
